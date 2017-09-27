@@ -1,0 +1,39 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+-file-scope	./makefile	/^	ctags --file-scope=no --totals .\/*$/;"	m
+AppendNode	./linearTable.c	/^void AppendNode(Node* origin, Node* following)$/;"	f
+CC	./makefile	/^CC=gcc$/;"	m
+CCFLAG	./makefile	/^CCFLAG= -g$/;"	m
+CompareTo	./linearTable.c	/^int CompareTo(void* data1, void* data2)$/;"	f
+Dequeue	./linearTable.c	/^void* Dequeue(Node* startNode)$/;"	f
+DestroyNode	./linearTable.c	/^void DestroyNode(Node* node)$/;"	f
+EXE	./makefile	/^EXE=main$/;"	m
+Enqueue	./linearTable.c	/^void Enqueue(Node* startNode, void* data)$/;"	f
+GetElem	./linearTable.c	/^void* GetElem(Node* startNode, int loc)$/;"	f
+INC	./makefile	/^INC=$/;"	m
+InitNode	./linearTable.c	/^Node* InitNode()$/;"	f
+LD	./makefile	/^LD=gcc$/;"	m
+LDFLAG	./makefile	/^LDFLAG= -g$/;"	m
+LIB	./makefile	/^LIB=$/;"	m
+Length	./linearTable.c	/^int Length(Node* node)$/;"	f
+ListDelete	./linearTable.c	/^void* ListDelete(Node* startNode, int loc)$/;"	f
+ListInsert	./linearTable.c	/^int ListInsert(Node* startNode, int loc, void* data)$/;"	f
+LocElem	./linearTable.c	/^int LocElem(Node* startNode, void* data, int (CompareTo)(void* data1, void* data2))$/;"	f
+Node	./linearTable.h	/^typedef struct _Node Node;$/;"	t	typeref:struct:_Node
+OBJ	./makefile	/^OBJ=${SRC:.c=.o}$/;"	m
+Pop	./linearTable.c	/^void* Pop(Node* startNode)$/;"	f
+Print	./linearTable.c	/^void Print(void* data)$/;"	f
+PrintList	./linearTable.c	/^void PrintList(Node* startNode, void (Print)(void* data))$/;"	f
+Push	./linearTable.c	/^void Push(Node* startNode, void* data)$/;"	f
+RemoveFollowing	./linearTable.c	/^void RemoveFollowing(Node* origin)$/;"	f
+Roll	./linearTable.c	/^Node* Roll(Node* startNode, int loc)$/;"	f
+SRC	./makefile	/^SRC=.\/linearTable.c .\/main.c$/;"	m
+_LINEARTABLE_H_	./linearTable.h	2;"	d
+_Node	./linearTable.h	/^struct _Node$/;"	s
+data	./linearTable.h	/^	void* data;$/;"	m	struct:_Node
+main	./main.c	/^int main(int argc, char** argv)$/;"	f
+next	./linearTable.h	/^	struct _Node *next;$/;"	m	struct:_Node	typeref:struct:_Node::_Node

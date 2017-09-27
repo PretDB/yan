@@ -1,0 +1,165 @@
+#include "dualTable.h"
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int CompareTo(void* data1, void* data2)
+{
+	if(*((int*)data1) == *((int*)data2))
+	{
+		return 0;
+	}
+	else if(*((int*)data1) >*(int*)data2)
+	{
+		return 1;
+	}
+	else
+	{
+		return -1;
+	}	
+}
+
+DualNode* InitNode()
+{
+	DualNode* node = (DualNode*)malloc(sizeof(DualNode));
+
+	node->data = NULL;
+	node->next = NULL;
+	node->last = NULL;
+
+	return node;
+}
+
+void DestroyDualNode(DualNode* node)
+{
+	if(!node)
+	{
+		free(node);
+	}
+}
+
+void AppendDualNode(DualNode* origin, DualNode* following)
+{
+	following->next = origin->next;
+	origin->next = following;
+}
+
+void RemoveFollowing(Node* origin)
+{
+	if(origin->next != NULL)
+	{
+		Node* n = origin->next;
+		origin->next = n->next;
+		free(n);
+	}
+}
+Node* Roll(Node* startNode, int loc)
+{
+	int l = 0;
+	while(l < loc)
+	{
+		l++;
+		startNode = startNode->next;
+	}
+	return startNode;
+}
+
+
+int Length(Node* node)
+{
+	int l = 0;
+	while(node != NULL)
+	{
+		l++;
+		node = node->next;
+	}
+	return l;
+}
+
+int LocElem(Node* startNode, void* data, int (CompareTo)(void* data1, void* data2))
+{
+	int loc = 0;
+	Node* n = startNode;
+	
+	while(n != NULL)
+	{
+		if(CompareTo(n->data, data) == 0)
+		{
+			return loc;
+		}
+		loc++;
+	}
+	return -1;
+}
+
+int ListInsert(Node* startNode, int loc, void* data)
+{
+	if(loc < 0 || loc > Length(startNode) - 1)
+	{
+		return -1;
+	}
+
+	int l = 0;
+	Node* t = InitNode();
+	t->data = data;
+	AppendNode(Roll(startNode, loc), t);
+	return 0;
+}
+
+void* ListDelete(Node* startNode, int loc)
+{
+	if(loc < 0 || loc > Length(startNode) - 1)
+	{
+		return NULL;
+	}
+
+	Node* n = Roll(startNode, loc - 1);
+	void* data = n->next->data;
+	n->next = n->next->next;
+	DestroyNode(n->next);
+	return data;
+}
+
+void* GetElem(Node* startNode, int loc)
+{
+	if(loc < 0 || loc > Length(startNode) - 1)
+	{
+		return NULL;
+	}
+	return Roll(startNode, loc)->data;
+}
+
+void PrintList(Node* startNode, void (Print)(void* data))
+{
+	while(startNode != NULL)
+	{
+		Print(startNode->data);
+		startNode = startNode->next;
+	}
+	printf("\n");
+}
+
+void Push(Node* startNode, void* data)
+{
+	ListInsert(startNode, Length(startNode) - 1, data);
+}
+void* Pop(Node* startNode)
+{
+	return ListDelete(startNode, Length(startNode) - 1);
+}
+
+void Enqueue(Node* startNode, void* data)
+{
+	ListInsert(startNode, 0, data);
+}
+
+void* Dequeue(Node* startNode)
+{
+	return Pop(startNode);
+}
+
+
+void Print(void* data)
+{
+	printf("%d\t", *((int*)data));
+}
