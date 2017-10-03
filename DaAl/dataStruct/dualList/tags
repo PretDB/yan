@@ -5,35 +5,36 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 -file-scope	./makefile	/^	ctags --file-scope=no --totals .\/*$/;"	m
-AppendNode	./dualTable.c	/^void AppendNode(Node* origin, Node* following)$/;"	f
+AppendDualNode	./dualTable.c	/^void AppendDualNode(DualNode* origin, DualNode* following)$/;"	f
 CC	./makefile	/^CC=gcc$/;"	m
 CCFLAG	./makefile	/^CCFLAG= -g$/;"	m
 CompareTo	./dualTable.c	/^int CompareTo(void* data1, void* data2)$/;"	f
-Dequeue	./dualTable.c	/^void* Dequeue(Node* startNode)$/;"	f
-DestroyNode	./dualTable.c	/^void DestroyNode(Node* node)$/;"	f
+Dequeue	./dualTable.c	/^void* Dequeue(DualNode* startNode)$/;"	f
+DestroyDualNode	./dualTable.c	/^void DestroyDualNode(DualNode* node)$/;"	f
+DualNode	./dualTable.h	/^typedef struct _DualNode DualNode;$/;"	t	typeref:struct:_DualNode
 EXE	./makefile	/^EXE=main$/;"	m
-Enqueue	./dualTable.c	/^void Enqueue(Node* startNode, void* data)$/;"	f
-GetElem	./dualTable.c	/^void* GetElem(Node* startNode, int loc)$/;"	f
+Enqueue	./dualTable.c	/^void Enqueue(DualNode* startNode, void* data)$/;"	f
+GetElem	./dualTable.c	/^void* GetElem(DualNode* startNode, int loc)$/;"	f
 INC	./makefile	/^INC=$/;"	m
-InitNode	./dualTable.c	/^Node* InitNode()$/;"	f
+InitDualNode	./dualTable.c	/^DualNode* InitDualNode()$/;"	f
 LD	./makefile	/^LD=gcc$/;"	m
 LDFLAG	./makefile	/^LDFLAG= -g$/;"	m
 LIB	./makefile	/^LIB=$/;"	m
-Length	./dualTable.c	/^int Length(Node* node)$/;"	f
-ListDelete	./dualTable.c	/^void* ListDelete(Node* startNode, int loc)$/;"	f
-ListInsert	./dualTable.c	/^int ListInsert(Node* startNode, int loc, void* data)$/;"	f
-LocElem	./dualTable.c	/^int LocElem(Node* startNode, void* data, int (CompareTo)(void* data1, void* data2))$/;"	f
-Node	./dualTable.h	/^typedef struct _Node Node;$/;"	t	typeref:struct:_Node
+Length	./dualTable.c	/^int Length(DualNode* node, DualNode* target)$/;"	f
+ListDelete	./dualTable.c	/^void* ListDelete(DualNode* startNode, int loc)$/;"	f
+ListInsert	./dualTable.c	/^int ListInsert(DualNode* startNode, int loc, void* data)$/;"	f
+LocElem	./dualTable.c	/^int LocElem(DualNode* startNode, void* data, int (CompareTo)(void* data1, void* data2))$/;"	f
 OBJ	./makefile	/^OBJ=${SRC:.c=.o}$/;"	m
-Pop	./dualTable.c	/^void* Pop(Node* startNode)$/;"	f
+Pop	./dualTable.c	/^void* Pop(DualNode* startNode)$/;"	f
 Print	./dualTable.c	/^void Print(void* data)$/;"	f
-PrintList	./dualTable.c	/^void PrintList(Node* startNode, void (Print)(void* data))$/;"	f
-Push	./dualTable.c	/^void Push(Node* startNode, void* data)$/;"	f
-RemoveFollowing	./dualTable.c	/^void RemoveFollowing(Node* origin)$/;"	f
-Roll	./dualTable.c	/^Node* Roll(Node* startNode, int loc)$/;"	f
+PrintList	./dualTable.c	/^void PrintList(DualNode* startNode, void (Print)(void* data))$/;"	f
+Push	./dualTable.c	/^void Push(DualNode* startNode, void* data)$/;"	f
+RemoveFollowingDualNode	./dualTable.c	/^void RemoveFollowingDualNode(DualNode* origin)$/;"	f
+Roll	./dualTable.c	/^DualNode* Roll(DualNode* startNode, int loc)$/;"	f
 SRC	./makefile	/^SRC=.\/dualTable.c .\/main.c$/;"	m
+_DualNode	./dualTable.h	/^struct _DualNode$/;"	s
 _LINEARTABLE_H_	./dualTable.h	2;"	d
-_Node	./dualTable.h	/^struct _Node$/;"	s
-data	./dualTable.h	/^	void* data;$/;"	m	struct:_Node
+data	./dualTable.h	/^	void* data;$/;"	m	struct:_DualNode
+last	./dualTable.h	/^	struct _DualNode *last;$/;"	m	struct:_DualNode	typeref:struct:_DualNode::_DualNode
 main	./main.c	/^int main(int argc, char** argv)$/;"	f
-next	./dualTable.h	/^	struct _Node *next;$/;"	m	struct:_Node	typeref:struct:_Node::_Node
+next	./dualTable.h	/^	struct _DualNode *next;$/;"	m	struct:_DualNode	typeref:struct:_DualNode::_DualNode

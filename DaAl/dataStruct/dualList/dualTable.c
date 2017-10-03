@@ -19,7 +19,7 @@ int CompareTo(void* data1, void* data2)
 	}	
 }
 
-DualNode* InitNode()
+DualNode* InitDualNode()
 {
 	DualNode* node = (DualNode*)malloc(sizeof(DualNode));
 
@@ -41,34 +41,51 @@ void DestroyDualNode(DualNode* node)
 void AppendDualNode(DualNode* origin, DualNode* following)
 {
 	following->next = origin->next;
+	if(following->next != NULL)
+	{
+		following->next->last = following;
+	}
 	origin->next = following;
+	following->last = origin;
 }
 
-void RemoveFollowing(Node* origin)
+void RemoveFollowingDualNode(DualNode* origin)
 {
 	if(origin->next != NULL)
 	{
-		Node* n = origin->next;
+		DualNode* n = origin->next;
 		origin->next = n->next;
-		free(n);
+		if(n->next != NULL)
+		{
+			n->next->last = origin;
+		}
+		DestroyDualNode(n);
 	}
 }
-Node* Roll(Node* startNode, int loc)
+
+// from startNode, roll forward if loc > 0,
+// backward if loc < 0;
+DualNode* Roll(DualNode* startNode, int loc)
 {
 	int l = 0;
-	while(l < loc)
+	char factor = 0;
+	factor = loc > 0 ? 1 : -1;
+
+	while(l !=  loc)
 	{
-		l++;
-		startNode = startNode->next;
+		l += factor;
+		startNode = factor > 0 ? startNode->next : startNode->last;
 	}
 	return startNode;
 }
 
-
-int Length(Node* node)
+// Length from node to target, target not included.
+// for example, n1 -> n2 -> n3 -> n4, node = n1, target = 
+// n4, length = 3.
+int Length(DualNode* node, DualNode* target)
 {
 	int l = 0;
-	while(node != NULL)
+	while(node != target)
 	{
 		l++;
 		node = node->next;
@@ -76,10 +93,10 @@ int Length(Node* node)
 	return l;
 }
 
-int LocElem(Node* startNode, void* data, int (CompareTo)(void* data1, void* data2))
+int LocElem(DualNode* startNode, void* data, int (CompareTo)(void* data1, void* data2))
 {
 	int loc = 0;
-	Node* n = startNode;
+	DualNode* n = startNode;
 	
 	while(n != NULL)
 	{
@@ -92,44 +109,46 @@ int LocElem(Node* startNode, void* data, int (CompareTo)(void* data1, void* data
 	return -1;
 }
 
-int ListInsert(Node* startNode, int loc, void* data)
+int ListInsert(DualNode* startNode, int loc, void* data)
 {
-	if(loc < 0 || loc > Length(startNode) - 1)
+	if(loc < 0 || loc > Length(startNode, NULL) - 1)
 	{
 		return -1;
 	}
 
 	int l = 0;
-	Node* t = InitNode();
+	DualNode* t = InitDualNode();
 	t->data = data;
-	AppendNode(Roll(startNode, loc), t);
+	AppendDualNode(Roll(startNode, loc), t);
 	return 0;
 }
 
-void* ListDelete(Node* startNode, int loc)
+void* ListDelete(DualNode* startNode, int loc)
 {
-	if(loc < 0 || loc > Length(startNode) - 1)
+	if(loc < 0 || loc > Length(startNode, NULL) - 1)
 	{
 		return NULL;
 	}
 
-	Node* n = Roll(startNode, loc - 1);
-	void* data = n->next->data;
-	n->next = n->next->next;
-	DestroyNode(n->next);
+	startNode = Roll(startNode, loc - 1);
+	void* data = startNode->next->data;
+	if (loc != 0)
+	{
+		RemoveFollowingDualNode(startNode);;
+	}
 	return data;
 }
 
-void* GetElem(Node* startNode, int loc)
+void* GetElem(DualNode* startNode, int loc)
 {
-	if(loc < 0 || loc > Length(startNode) - 1)
+	if(loc < 0 || loc > Length(startNode, NULL) - 1)
 	{
 		return NULL;
 	}
 	return Roll(startNode, loc)->data;
 }
 
-void PrintList(Node* startNode, void (Print)(void* data))
+void PrintList(DualNode* startNode, void (Print)(void* data))
 {
 	while(startNode != NULL)
 	{
@@ -139,21 +158,21 @@ void PrintList(Node* startNode, void (Print)(void* data))
 	printf("\n");
 }
 
-void Push(Node* startNode, void* data)
+void Push(DualNode* startNode, void* data)
 {
-	ListInsert(startNode, Length(startNode) - 1, data);
+	ListInsert(startNode, Length(startNode, NULL) - 1, data);
 }
-void* Pop(Node* startNode)
+void* Pop(DualNode* startNode)
 {
-	return ListDelete(startNode, Length(startNode) - 1);
+	return ListDelete(startNode, Length(startNode, NULL) - 1);
 }
 
-void Enqueue(Node* startNode, void* data)
+void Enqueue(DualNode* startNode, void* data)
 {
 	ListInsert(startNode, 0, data);
 }
 
-void* Dequeue(Node* startNode)
+void* Dequeue(DualNode* startNode)
 {
 	return Pop(startNode);
 }
