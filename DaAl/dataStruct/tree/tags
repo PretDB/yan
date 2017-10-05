@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+-file-scope	./makefile	/^	ctags --file-scope=no --totals .\/*$/;"	m
+AddChild	./tree.c	/^int AddChild(Tree* parent, Tree* child, int loc)$/;"	f
+CC	./makefile	/^CC=gcc$/;"	m
+CCFLAG	./makefile	/^CCFLAG= -g$/;"	m
+EXE	./makefile	/^EXE=main$/;"	m
+Fill	./main.c	/^int Fill(Tree* t)$/;"	f
+INC	./makefile	/^INC=$/;"	m
+InOrder	./tree.c	/^void InOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
+InitTreeNode	./tree.c	/^Tree* InitTreeNode()$/;"	f
+LD	./makefile	/^LD=gcc$/;"	m
+LDFLAG	./makefile	/^LDFLAG= -g$/;"	m
+LEFT	./tree.h	5;"	d
+LIB	./makefile	/^LIB=$/;"	m
+LevelFill	./main.c	/^int LevelFill(Tree* t, void* counter)$/;"	f
+OBJ	./makefile	/^OBJ=${SRC:.c=.o}$/;"	m
+PostOrder	./tree.c	/^void PostOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
+PreOrder	./tree.c	/^void PreOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
+Print	./main.c	/^int Print(Tree* t, void* p)$/;"	f
+RIGHT	./tree.h	6;"	d
+RemoveChild	./tree.c	/^Tree* RemoveChild(Tree* parent, int loc)$/;"	f
+SRC	./makefile	/^SRC=.\/tree.c .\/main.c$/;"	m
+Tree	./tree.h	/^typedef struct _Tree Tree;$/;"	t	typeref:struct:_Tree
+Visit	./tree.c	/^void Visit(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
+_TREE_H_	./tree.h	2;"	d
+_Tree	./tree.h	/^struct _Tree$/;"	s
+data	./tree.h	/^    void* data;$/;"	m	struct:_Tree
+left	./tree.h	/^    struct _Tree* left;$/;"	m	struct:_Tree	typeref:struct:_Tree::_Tree
+main	./main.c	/^int main(int argc, char** argv)$/;"	f
+right	./tree.h	/^    struct _Tree* right;$/;"	m	struct:_Tree	typeref:struct:_Tree::_Tree

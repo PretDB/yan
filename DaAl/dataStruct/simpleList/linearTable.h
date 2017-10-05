@@ -12,17 +12,18 @@ struct _Node
 
 int CompareTo(void* data1, void* data2);
 
+Node* InitLoopNode();
 Node* InitNode();
 void DestroyNode(Node* node);
 void AppendNode(Node* origin, Node* following);
-void RemoveFollowing(Node* origin);
+void* RemoveFollowing(Node* origin);
 
-int Length(Node* node);
-int LocElem(Node* startNode, void* data, int (CompareTo)(void* data1, void* data2));
+int Length(Node* node, Node* target);
+int LocElem(Node* startNode, Node* endNode, void* data, int (CompareTo)(void* data1, void* data2));
 int ListInsert(Node* startNode, int loc, void* data);
 void* ListDelete(Node* startNode, int loc);
 void* GetElem(Node* startNode, int loc);
-void PrintList(Node* startNode, void (Print)(void* data));
+void PrintList(Node* startNode, Node* endNode, void (Print)(void* data));
 
 void Push(Node* startNode, void* data);
 void* Pop(Node* startNode);

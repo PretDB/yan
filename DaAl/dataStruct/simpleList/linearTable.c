@@ -19,6 +19,11 @@ int CompareTo(void* data1, void* data2)
 	}	
 }
 
+Node* InitLoopNode()
+{
+	Node* node = InitNode();
+	node->next = node;
+}
 Node* InitNode()
 {
 	Node* node = (Node*)malloc(sizeof(Node));
@@ -41,31 +46,31 @@ void AppendNode(Node* origin, Node* following)
 	origin->next = following;
 }
 
-void RemoveFollowing(Node* origin)
+void* RemoveFollowing(Node* origin)
 {
 	if(origin->next != NULL)
 	{
-		Node* n = origin->next;
-		origin->next = n->next;
-		free(n);
+		void* data = origin->next->data;
+		origin->next = origin->next->next;
+		return data;
 	}
+	return NULL;
 }
 Node* Roll(Node* startNode, int loc)
 {
-	int l = 0;
-	while(l < loc)
+	while(loc > 0)
 	{
-		l++;
+		loc--;
 		startNode = startNode->next;
 	}
 	return startNode;
 }
 
 
-int Length(Node* node)
+int Length(Node* node, Node* target)
 {
 	int l = 0;
-	while(node != NULL)
+	while(node != target)
 	{
 		l++;
 		node = node->next;
@@ -73,30 +78,29 @@ int Length(Node* node)
 	return l;
 }
 
-int LocElem(Node* startNode, void* data, int (CompareTo)(void* data1, void* data2))
+int LocElem(Node* startNode, Node* endNode, void* data, int (CompareTo)(void* data1, void* data2))
 {
 	int loc = 0;
-	Node* n = startNode;
 	
-	while(n != NULL)
+	while(startNode != endNode)
 	{
-		if(CompareTo(n->data, data) == 0)
+		if(CompareTo(startNode->data, data) == 0)
 		{
 			return loc;
 		}
 		loc++;
+		startNode = startNode->next;
 	}
 	return -1;
 }
 
 int ListInsert(Node* startNode, int loc, void* data)
 {
-	if(loc < 0 || loc > Length(startNode) - 1)
+	if(loc < 0 || loc > Length(startNode, NULL) - 1)
 	{
 		return -1;
 	}
 
-	int l = 0;
 	Node* t = InitNode();
 	t->data = data;
 	AppendNode(Roll(startNode, loc), t);
@@ -105,30 +109,28 @@ int ListInsert(Node* startNode, int loc, void* data)
 
 void* ListDelete(Node* startNode, int loc)
 {
-	if(loc < 0 || loc > Length(startNode) - 1)
+	if(loc < 0 || loc > Length(startNode, NULL) - 1)
 	{
 		return NULL;
 	}
 
 	Node* n = Roll(startNode, loc - 1);
-	void* data = n->next->data;
-	n->next = n->next->next;
-	DestroyNode(n->next);
+	void* data = RemoveFollowing(n);
 	return data;
 }
 
 void* GetElem(Node* startNode, int loc)
 {
-	if(loc < 0 || loc > Length(startNode) - 1)
+	if(loc < 0 || loc > Length(startNode, NULL) - 1)
 	{
 		return NULL;
 	}
 	return Roll(startNode, loc)->data;
 }
 
-void PrintList(Node* startNode, void (Print)(void* data))
+void PrintList(Node* startNode, Node* endNode, void (Print)(void* data))
 {
-	while(startNode != NULL)
+	while(startNode != endNode)
 	{
 		Print(startNode->data);
 		startNode = startNode->next;
@@ -138,11 +140,11 @@ void PrintList(Node* startNode, void (Print)(void* data))
 
 void Push(Node* startNode, void* data)
 {
-	ListInsert(startNode, Length(startNode) - 1, data);
+	ListInsert(startNode, Length(startNode, NULL) - 1, data);
 }
 void* Pop(Node* startNode)
 {
-	return ListDelete(startNode, Length(startNode) - 1);
+	return ListDelete(startNode, Length(startNode, NULL) - 1);
 }
 
 void Enqueue(Node* startNode, void* data)
