@@ -5,11 +5,12 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 -file-scope	./makefile	/^	ctags --file-scope=no --totals .\/*$/;"	m
-AddChild	./tree.c	/^int AddChild(Tree* parent, Tree* child, int loc)$/;"	f
+AddChild	./tree.c	/^int AddChild(Tree* parent, void* childData, int loc)$/;"	f
+BaseTest	./main.c	/^int BaseTest(int level)$/;"	f
 CC	./makefile	/^CC=gcc$/;"	m
 CCFLAG	./makefile	/^CCFLAG= -g$/;"	m
 EXE	./makefile	/^EXE=main$/;"	m
-Fill	./main.c	/^int Fill(Tree* t)$/;"	f
+Fill	./tree.c	/^void Fill(Tree* t, int level)$/;"	f
 INC	./makefile	/^INC=$/;"	m
 InOrder	./tree.c	/^void InOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
 InitTreeNode	./tree.c	/^Tree* InitTreeNode()$/;"	f
@@ -17,11 +18,11 @@ LD	./makefile	/^LD=gcc$/;"	m
 LDFLAG	./makefile	/^LDFLAG= -g$/;"	m
 LEFT	./tree.h	5;"	d
 LIB	./makefile	/^LIB=$/;"	m
-LevelFill	./main.c	/^int LevelFill(Tree* t, void* counter)$/;"	f
+LevelOrder	./tree.c	/^void LevelOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
 OBJ	./makefile	/^OBJ=${SRC:.c=.o}$/;"	m
 PostOrder	./tree.c	/^void PostOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
 PreOrder	./tree.c	/^void PreOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
-Print	./main.c	/^int Print(Tree* t, void* p)$/;"	f
+Print	./tree.c	/^int Print(Tree* t, void* p)$/;"	f
 RIGHT	./tree.h	6;"	d
 RemoveChild	./tree.c	/^Tree* RemoveChild(Tree* parent, int loc)$/;"	f
 SRC	./makefile	/^SRC=.\/tree.c .\/main.c$/;"	m
