@@ -1,6 +1,5 @@
-SRC=./tree.c ./main.c
+SRC=../simpleList/linearTable.c ./tree.c ./main.c
 OBJ=${SRC:.c=.o}
-DEP=../simpleList/linearTable.o
 EXE=main
 LIB=
 INC=
@@ -14,7 +13,6 @@ LDFLAG= -g
 $(EXE):$(OBJ)
 	$(LD) -o $(EXE) $(LDFLAG) $(OBJ) $(LIB)
 	ctags --file-scope=no --totals ./*
-
 
 $(OBJ):$(SRC)
 	$(CC) -c $(CCFLAG) $(SRC)

@@ -6,15 +6,20 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 -file-scope	./makefile	/^	ctags --file-scope=no --totals .\/*$/;"	m
 AddChild	./tree.c	/^int AddChild(Tree* parent, void* childData, int loc)$/;"	f
+BSTTest	./main.c	/^int BSTTest(int count)$/;"	f
 BaseTest	./main.c	/^int BaseTest(int level)$/;"	f
 CC	./makefile	/^CC=gcc$/;"	m
 CCFLAG	./makefile	/^CCFLAG= -g$/;"	m
-DEP	./makefile	/^DEP=..\/simpleList\/linearTable.o$/;"	m
+CompareInt	./main.c	/^int CompareInt(void* src, void* dst)$/;"	f
+DeleteTest	./main.c	/^int DeleteTest(int count)$/;"	f
 EXE	./makefile	/^EXE=main$/;"	m
 Fill	./tree.c	/^void Fill(Tree* t, int level)$/;"	f
+FillBlocks	./main.c	/^int* FillBlocks(Tree* t, int count)$/;"	f
+FindMostRightNode	./tree.c	/^Tree* FindMostRightNode(Tree* t)$/;"	f
 INC	./makefile	/^INC=$/;"	m
 InOrder	./tree.c	/^void InOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
 InitTreeNode	./tree.c	/^Tree* InitTreeNode()$/;"	f
+Insert	./tree.c	/^int Insert(Tree* t, int (*CompareTo)(void* src, void* dst), void* data)$/;"	f
 LD	./makefile	/^LD=gcc$/;"	m
 LDFLAG	./makefile	/^LDFLAG= -g$/;"	m
 LEFT	./tree.h	5;"	d
@@ -23,10 +28,12 @@ LevelOrder	./tree.c	/^void LevelOrder(Tree* t, int (*Func)(Tree* t, void* p), vo
 OBJ	./makefile	/^OBJ=${SRC:.c=.o}$/;"	m
 PostOrder	./tree.c	/^void PostOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
 PreOrder	./tree.c	/^void PreOrder(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
-Print	./tree.c	/^int Print(Tree* t, void* p)$/;"	f
+PrintTree	./tree.c	/^int PrintTree(Tree* t, void* p)$/;"	f
 RIGHT	./tree.h	6;"	d
-RemoveChild	./tree.c	/^Tree* RemoveChild(Tree* parent, int loc)$/;"	f
-SRC	./makefile	/^SRC=.\/tree.c .\/main.c$/;"	m
+Remove	./tree.c	/^void* Remove(Tree* t, int (*CompareTo)(void* src, void* dst), void* data)$/;"	f
+RemoveChild	./tree.c	/^void* RemoveChild(Tree* parent, int loc)$/;"	f
+SRC	./makefile	/^SRC=..\/simpleList\/linearTable.c .\/tree.c .\/main.c$/;"	m
+Search	./tree.c	/^Tree* Search(Tree* t, int (*CompareTo)(void* src, void* dst), void* data)$/;"	f
 Tree	./tree.h	/^typedef struct _Tree Tree;$/;"	t	typeref:struct:_Tree
 Visit	./tree.c	/^void Visit(Tree* t, int (*Func)(Tree* t, void* p), void* p)$/;"	f
 _TREE_H_	./tree.h	2;"	d
