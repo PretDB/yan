@@ -9,6 +9,7 @@ UP使用的环境是：
 - gdb 8.0.1
 - make 4.2.1
 - ctags 5.8
+
 UP同时也使用vim作为主要的编辑器，版本为8.0（这个并不重要）
 
 ## 目录结构
@@ -17,4 +18,4 @@ UP同时也使用vim作为主要的编辑器，版本为8.0（这个并不重要
 - operatingSystem：操作系统相关；
 - orgnazation：计算机组成；
 - networking：计算机网络；
-- **在每个目录下面，将各个不同的内容放在各自的文件夹下面，在文件夹下面有README.md，推荐使用支持markdown的文本打开，或者直接在[我的GitHub](https://github.com/PretDB/yan)中查看 **
+- ** 在每个目录下面，将各个不同的内容放在各自的文件夹下面，在文件夹下面有README.md，推荐使用支持markdown的文本打开，或者直接在[我的GitHub](https://github.com/PretDB/yan)中查看 **
