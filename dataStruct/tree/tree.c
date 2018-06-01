@@ -9,10 +9,10 @@ void Fill(Tree* t, int level)
 {
     if(level > 0)
     {
-        t->left = InitTreeNode();
+        t->left  = InitTreeNode();
         t->right = InitTreeNode();
-        Fill(t->left, level - 1);
-        Fill(t->right, level - 1);
+        Fill(t->left  , level - 1);
+        Fill(t->right , level - 1);
         
         t->data = malloc(sizeof(int));
         *((int*)(t->data)) = rand() % 10;

@@ -1,7 +1,7 @@
 SRC=main.c
 OBJ=${SRC:.c=.o}
-EXE=main
-LIB=
+EXE=heap
+LIB=-lm
 INC=
 
 

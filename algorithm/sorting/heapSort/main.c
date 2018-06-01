@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+#include <math.h>
 
 #define SWAP(A, B) { int _tmp = 0; _tmp = A; A = B; B = _tmp; }
 
@@ -34,8 +35,41 @@ int* InitArray(int count, int max)
 	}
 }
 
+void CreateHeap(int* data, int start, int end)
+{
+	int dad = start;
+	int son = start * 2 + 1;
+
+	if(son <= end && data[son] < data[son + 1])
+	{
+		son++;
+	}
+	if(data[dad] > data[son])
+	{
+		return;
+	}
+	else
+	{
+		int t = data[dad];
+		data[dad] = data[son];
+		data[son] = t;
+	}
+}
+
+
 void HeapSorting(int* data, int count)
 {
+	for(int i = count / 2 - 1; i >= 0; i--)
+	{
+		CreateHeap(data, i, count - 1);
+	}
+	for(int i = count / 2 - 1; i > 0; i--)
+	{
+		int t = data[0];
+		data[0] = data[i];
+		data[i] = t;
+		CreateHeap(data, 0, i - 1);
+	}
 	return;
 }
 

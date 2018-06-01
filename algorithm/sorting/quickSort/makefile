@@ -1,5 +1,5 @@
-SRC=main.c
-OBJ=${SRC:.c=.o}
+SRC=main.cpp
+OBJ=${SRC:.cpp=.o}
 EXE=main
 LIB=
 INC=

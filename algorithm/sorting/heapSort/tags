@@ -7,16 +7,15 @@
 -file-scope	./makefile	/^	ctags  --file-scope=no .\/*$/;"	m
 CC	./makefile	/^CC=gcc$/;"	m
 CCFLAG	./makefile	/^CCFLAG= -g$/;"	m
-EXE	./makefile	/^EXE=main$/;"	m
+CreateHeap	./main.c	/^void CreateHeap(int* data, int start, int end)$/;"	f
+EXE	./makefile	/^EXE=heap$/;"	m
+HeapSorting	./main.c	/^void HeapSorting(int* data, int count)$/;"	f
 INC	./makefile	/^INC=$/;"	m
-InitArray	./main.cpp	/^int* InitArray(int count, int max)$/;"	f
+InitArray	./main.c	/^int* InitArray(int count, int max)$/;"	f
 LD	./makefile	/^LD=gcc$/;"	m
 LDFLAG	./makefile	/^LDFLAG= -g$/;"	m
-LIB	./makefile	/^LIB=$/;"	m
-OBJ	./makefile	/^OBJ=${SRC:.cpp=.o}$/;"	m
-Print	./main.cpp	/^void Print(int* data, int count)$/;"	f
-QuickSorting	./main.cpp	/^void QuickSorting(int* data, int count)$/;"	f
-SRC	./makefile	/^SRC=main.cpp$/;"	m
-main	./main.cpp	/^int main(int argc, char** argv)$/;"	f
-main	./test.c	/^int main(int argc, char** argv)$/;"	f
-main	./test.cpp	/^int main(int argc, char** argv)$/;"	f
+LIB	./makefile	/^LIB=-lm$/;"	m
+OBJ	./makefile	/^OBJ=${SRC:.c=.o}$/;"	m
+Print	./main.c	/^void Print(int* data, int count)$/;"	f
+SRC	./makefile	/^SRC=main.c$/;"	m
+main	./main.c	/^int main(int argc, char** argv)$/;"	f

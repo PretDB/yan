@@ -11,5 +11,4 @@ int main(int argc, char** argv)
 
 	printf("a = %d, b = %d\n", a, b);
 
-
 }
