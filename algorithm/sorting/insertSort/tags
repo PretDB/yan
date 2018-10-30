@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+-file-scope	./makefile	/^	ctags  --file-scope=no .\/*$/;"	m
+CC	./makefile	/^CC=gcc$/;"	m
+CCFLAG	./makefile	/^CCFLAG= -g$/;"	m
+EXE	./makefile	/^EXE=insertSort$/;"	m
+INC	./makefile	/^INC=$/;"	m
+LD	./makefile	/^LD=gcc$/;"	m
+LDFLAG	./makefile	/^LDFLAG= -g$/;"	m
+LIB	./makefile	/^LIB=$/;"	m
+OBJ	./makefile	/^OBJ=${SRC:.c=.o}$/;"	m
+SRC	./makefile	/^SRC=.\/insertSort.c$/;"	m
+insertSort	./insertSort.c	/^void insertSort(int* buf, int l)$/;"	f
+main	./insertSort.c	/^int main(int argc, char** argv)$/;"	f
